@@ -1,6 +1,8 @@
 package main
 
 import (
+	"dev-streaming-system/routes"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,6 +16,9 @@ func main() {
 			"message": "Hello! World",
 		})
 	})
+
+	// ルーティングを登録
+	routes.RegisterVideoRoutes(router)
 
 	// サーバー起動
 	router.Run(":8080")
