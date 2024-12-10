@@ -1,0 +1,30 @@
+services:
+  backend:
+    container_name: dev-streaming-system
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app  # ホストのソースコードをコンテナ内にマウント
+      - /app/tmp  # air が内部で使用するディレクトリを一時的にマウント
+    environment:
+      - GO_ENV=development
+      - DATABASE_URL=postgres://user:password@db:5432/exampledb
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13-alpine
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: exampledb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:

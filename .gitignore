@@ -7,6 +7,8 @@
 *.dll
 *.so
 *.dylib
+.DS_Store
+/tmp
 
 # Test binary, built with `go test -c`
 *.test
@@ -23,3 +25,16 @@ go.work.sum
 
 # env file
 .env
+
+# Go modules
+/go.sum
+/go.mod
+
+# Docker related files
+docker-compose.override.yml
+.env
+
+
+# IDEs and Editors
+.idea/
+.vscode/
